@@ -9,28 +9,28 @@
 /* Begin PBXBuildFile section */
 		AC482E802B0E104A00DADB70 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC482E7F2B0E104A00DADB70 /* Food.swift */; };
 		AC482E822B0E106300DADB70 /* ContentViewFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC482E812B0E106300DADB70 /* ContentViewFood.swift */; };
+		ACDF10B22B0E5533000DF27B /* Recepe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF10B12B0E5533000DF27B /* Recepe.swift */; };
+		ACDF10B42B0E553F000DF27B /* RecepeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF10B32B0E553F000DF27B /* RecepeDetailsView.swift */; };
+		ACDF10B62B0E5547000DF27B /* NewRecepeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF10B52B0E5547000DF27B /* NewRecepeScreen.swift */; };
+		ACDF10B82B0E5551000DF27B /* RecepeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF10B72B0E5551000DF27B /* RecepeCell.swift */; };
 		ACEE59C12B0C078F0075D5EF /* SwiftProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE59C02B0C078F0075D5EF /* SwiftProjectApp.swift */; };
 		ACEE59C32B0C078F0075D5EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE59C22B0C078F0075D5EF /* ContentView.swift */; };
 		ACEE59C52B0C07900075D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACEE59C42B0C07900075D5EF /* Assets.xcassets */; };
 		ACEE59C82B0C07900075D5EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACEE59C72B0C07900075D5EF /* Preview Assets.xcassets */; };
-		ACEE5A132B0CEFEB0075D5EF /* ClotheCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE5A122B0CEFEB0075D5EF /* ClotheCell.swift */; };
-		ACEE5A152B0CF0130075D5EF /* NewClotheScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE5A142B0CF0130075D5EF /* NewClotheScreen.swift */; };
-		ACEE5A172B0CF0280075D5EF /* ClotheDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE5A162B0CF0280075D5EF /* ClotheDetailsView.swift */; };
-		ACEE5A192B0CF03F0075D5EF /* Clothe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE5A182B0CF03F0075D5EF /* Clothe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC482E7F2B0E104A00DADB70 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		AC482E812B0E106300DADB70 /* ContentViewFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewFood.swift; sourceTree = "<group>"; };
+		ACDF10B12B0E5533000DF27B /* Recepe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recepe.swift; sourceTree = "<group>"; };
+		ACDF10B32B0E553F000DF27B /* RecepeDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecepeDetailsView.swift; sourceTree = "<group>"; };
+		ACDF10B52B0E5547000DF27B /* NewRecepeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRecepeScreen.swift; sourceTree = "<group>"; };
+		ACDF10B72B0E5551000DF27B /* RecepeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecepeCell.swift; sourceTree = "<group>"; };
 		ACEE59BD2B0C078F0075D5EF /* SwiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEE59C02B0C078F0075D5EF /* SwiftProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProjectApp.swift; sourceTree = "<group>"; };
 		ACEE59C22B0C078F0075D5EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ACEE59C42B0C07900075D5EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACEE59C72B0C07900075D5EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		ACEE5A122B0CEFEB0075D5EF /* ClotheCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClotheCell.swift; sourceTree = "<group>"; };
-		ACEE5A142B0CF0130075D5EF /* NewClotheScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClotheScreen.swift; sourceTree = "<group>"; };
-		ACEE5A162B0CF0280075D5EF /* ClotheDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClotheDetailsView.swift; sourceTree = "<group>"; };
-		ACEE5A182B0CF03F0075D5EF /* Clothe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +65,10 @@
 			children = (
 				ACEE59C02B0C078F0075D5EF /* SwiftProjectApp.swift */,
 				ACEE59C22B0C078F0075D5EF /* ContentView.swift */,
-				ACEE5A182B0CF03F0075D5EF /* Clothe.swift */,
-				ACEE5A162B0CF0280075D5EF /* ClotheDetailsView.swift */,
-				ACEE5A142B0CF0130075D5EF /* NewClotheScreen.swift */,
-				ACEE5A122B0CEFEB0075D5EF /* ClotheCell.swift */,
+				ACDF10B12B0E5533000DF27B /* Recepe.swift */,
+				ACDF10B32B0E553F000DF27B /* RecepeDetailsView.swift */,
+				ACDF10B52B0E5547000DF27B /* NewRecepeScreen.swift */,
+				ACDF10B72B0E5551000DF27B /* RecepeCell.swift */,
 				AC482E7F2B0E104A00DADB70 /* Food.swift */,
 				AC482E812B0E106300DADB70 /* ContentViewFood.swift */,
 				ACEE59C42B0C07900075D5EF /* Assets.xcassets */,
@@ -155,14 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEE5A152B0CF0130075D5EF /* NewClotheScreen.swift in Sources */,
 				ACEE59C32B0C078F0075D5EF /* ContentView.swift in Sources */,
-				ACEE5A132B0CEFEB0075D5EF /* ClotheCell.swift in Sources */,
-				ACEE5A172B0CF0280075D5EF /* ClotheDetailsView.swift in Sources */,
+				ACDF10B82B0E5551000DF27B /* RecepeCell.swift in Sources */,
+				ACDF10B42B0E553F000DF27B /* RecepeDetailsView.swift in Sources */,
+				ACDF10B62B0E5547000DF27B /* NewRecepeScreen.swift in Sources */,
 				AC482E802B0E104A00DADB70 /* Food.swift in Sources */,
 				ACEE59C12B0C078F0075D5EF /* SwiftProjectApp.swift in Sources */,
 				AC482E822B0E106300DADB70 /* ContentViewFood.swift in Sources */,
-				ACEE5A192B0CF03F0075D5EF /* Clothe.swift in Sources */,
+				ACDF10B22B0E5533000DF27B /* Recepe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

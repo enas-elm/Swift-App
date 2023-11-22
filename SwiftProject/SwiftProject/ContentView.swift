@@ -9,27 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var newClotheScreenIsPresented = false
+    @State var newRecepeScreenIsPresented = false
     
-    @StateObject var myCloset = Closet(clothes: Clothe.previewCloset)
+    @StateObject var myRecepes = AllRecepes(recepes: Recepe.previewAllRecepes)
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack(alignment: .leading) {
-                        ForEach(myCloset.clothes) { clothe in
+                        ForEach(myRecepes.recepes) { recepe in
                             NavigationLink {
-                                ClotheDetailsView(clothe: clothe, closet: myCloset)
+                                RecepeDetailsView(recepe: recepe, allRecepes: myRecepes)
                             } label: {
-                                ClotheCell(clothe: clothe)
+                                RecepeCell(recepe: recepe)
                             }
                             Divider()
                                 .padding()
                         }
                     }
                     NavigationLink {
-                        NewClotheScreen(closet: myCloset)
+                        NewRecepeScreen(allRecepes: myRecepes)
                     } label: {
                        Text("New")
                     }
@@ -42,5 +42,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(myCloset: Closet(clothes: Clothe.previewCloset))
+    ContentView(myRecepes: AllRecepes(recepes: Recepe.previewAllRecepes))
 }

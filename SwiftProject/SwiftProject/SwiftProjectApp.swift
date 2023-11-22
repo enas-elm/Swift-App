@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(myCloset: Closet(clothes: []))
+            ContentView(myRecepes: AllRecepes(recepes: []))
         }
     }
 }
