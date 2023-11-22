@@ -29,12 +29,13 @@ struct ClotheDetailsView: View {
             TextField("Prix", value: $clothe.price, format: .number)
                 .keyboardType(.numberPad)
             ColorPicker("Color : ", selection: $clothe.color)
+            
         }
         .padding()
 
         
         Button(action: {
-            closet.removeClothe(clothe)
+            closet.removeClothe(clothe: clothe)
         }, label: {
             Image(systemName: "xmark.bin")
                 .foregroundColor(.red)

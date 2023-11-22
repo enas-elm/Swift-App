@@ -17,10 +17,8 @@ class Closet: ObservableObject {
         self.clothes = clothes
     }
     
-    func removeClothe(_ clothe: Clothe) {
-         if let index = clothes.firstIndex(where: { $0.id == clothe.id }) {
-             clothes.remove(at: index)
-         }
+    func removeClothe(clothe: Clothe) {
+        clothes.removeAll { $0.id == clothe.id }
      }
 }
 

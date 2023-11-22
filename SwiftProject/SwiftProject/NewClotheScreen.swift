@@ -16,6 +16,16 @@ struct NewClotheScreen: View {
     @State var color: Color = .gray
     @State var price: Float = 20
     
+    @State var foods = [Food]()
+    @State var query: String = ""
+    
+    func getNutrition() {
+        Api().loadData(query: self.query) { (foods) in
+            self.foods = foods
+        }
+    }
+    
+    
     var body: some View {
         VStack(spacing: 16) {
             
@@ -37,10 +47,27 @@ struct NewClotheScreen: View {
                 .keyboardType(.numberPad)
             ColorPicker("Couleur : ", selection: $color)
             
-            Button("Add") {
-                let myNewClothe = Clothe(imgUrl: urlString, brand: name, color: color, price: price)
-                closet.clothes.append(myNewClothe)
+            TextField(
+                "Enter some food text",
+                text: $query
+            )
+            Button(action: getNutrition) {
+                Text("Get food info")
             }
+            Text("[BHJVHJVJHVGHVJGVJHVBHJBHK")
+                .padding()
+            List(foods) { food in
+                Text("\(food.calories) cal")
+                Button("Add") {
+                    let myNewClothe = Clothe(imgUrl: urlString, brand: name, color: color, price: food.calories)
+                    closet.clothes.append(myNewClothe)
+                }
+            }
+            
+//            Button("Add") {
+//                let myNewClothe = Clothe(imgUrl: urlString, brand: name, color: color, price: food.calories))
+//                closet.clothes.append(myNewClothe)
+//            }
         }
         .padding()
     }
