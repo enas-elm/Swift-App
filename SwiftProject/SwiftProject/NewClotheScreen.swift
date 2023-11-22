@@ -37,8 +37,8 @@ struct NewClotheScreen: View {
                 .keyboardType(.numberPad)
             ColorPicker("Couleur : ", selection: $color)
             
-            Button("Ajouter") {
-                let myNewClothe = Clothe(brand: name, color: color, price: price)
+            Button("Add") {
+                let myNewClothe = Clothe(imgUrl: urlString, brand: name, color: color, price: price)
                 closet.clothes.append(myNewClothe)
             }
         }

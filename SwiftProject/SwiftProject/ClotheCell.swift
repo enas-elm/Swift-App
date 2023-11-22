@@ -11,7 +11,7 @@ struct ClotheCell: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            AsyncImage(url: URL(string: "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw4c7a6f1f/images/hi-res/HTSC26045KBLA01_A.jpg?sw=2025&sh=2501")) { image in
+            AsyncImage(url: URL(string: clothe.imgUrl)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -27,6 +27,7 @@ struct ClotheCell: View {
                 .fontWeight(.heavy)
                 .padding(16)
         }
+        
         .frame(width: 150, height: 150)
 
     }

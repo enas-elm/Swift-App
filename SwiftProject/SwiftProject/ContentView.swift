@@ -11,9 +11,7 @@ struct ContentView: View {
     
     @State var newClotheScreenIsPresented = false
     
-    @StateObject var myCloset: Closet
-    
-    @State var selectedIndex: Int = -1
+    @StateObject var myCloset = Closet(clothes: Clothe.previewCloset)
     
     var body: some View {
         NavigationView {
@@ -22,7 +20,7 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         ForEach(myCloset.clothes) { clothe in
                             NavigationLink {
-                                ClotheDetailsView(clothe: clothe)
+                                ClotheDetailsView(clothe: clothe, closet: myCloset)
                             } label: {
                                 ClotheCell(clothe: clothe)
                             }
