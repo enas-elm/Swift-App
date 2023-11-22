@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-
-struct NewRecepeScreen: View {
+struct NewRecipeScreen: View {
     
-    @ObservedObject var allRecepes: AllRecepes
+    @ObservedObject var allRecipes: AllRecipes
     
     @State var imgUrl: String = ""
     @State var name: String = ""
@@ -25,10 +24,8 @@ struct NewRecepeScreen: View {
         }
     }
     
-    
     var body: some View {
         VStack(spacing: 16) {
-            
             AsyncImage(url: URL(string: imgUrl)) { image in
                 image
                     .resizable()
@@ -38,8 +35,6 @@ struct NewRecepeScreen: View {
                     .foregroundColor(.gray)
             }
             .frame(width: 300, height: 200)
-
-
             
             TextField("Image (URL)", text: $imgUrl)
             TextField("Nom", text: $name)
@@ -47,33 +42,28 @@ struct NewRecepeScreen: View {
                 .keyboardType(.numberPad)
             TextField("Time", value: $time, format: .number)
                 .keyboardType(.numberPad)
-
-
+            
             TextField(
                 "Enter some food text",
                 text: $query
             )
-            Button(action: getNutrition) {
-                Text("Get food info")
-            }
-                .padding()
-            List(foods) { food in
-                Text("\(food.calories) cal")
-                Button("Add") {
-                    let myNewRecepe = Recepe(imgUrl: imgUrl, name: name, time: time, calories: food.calories)
-                    allRecepes.recepes.append(myNewRecepe)
-                }
-            }
             
-//            Button("Add") {
-//                let myNewRecepe = Recepe(imgUrl: imgUrl, name: name, color: color, calories: food.calories))
-//                allRecepes.recepes.append(myNewRecepe)
-//            }
+
+            Button(action: {
+                getNutrition()
+                guard let food = foods.first else { return }
+                let myNewRecipe = Recipe(imgUrl: imgUrl, name: name, time: time, calories: food.calories)
+                allRecipes.recipes.append(myNewRecipe)
+            }) {
+                Text("Add")
+            }
+            .padding()
         }
         .padding()
     }
 }
 
+
 #Preview {
-    NewRecepeScreen(allRecepes: AllRecepes(recepes: []))
+    NewRecipeScreen(allRecipes: AllRecipes(recipes: []))
 }

@@ -27,7 +27,6 @@ struct ContentViewFood: View {
             Button(action: getNutrition) {
                 Text("Get food info")
             }
-            Text("[BHJVHJVJHVGHVJGVJHVBHJBHK")
                 .padding()
             List(foods) { food in
                 Text("\(food.calories) cal")
