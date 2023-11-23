@@ -38,7 +38,7 @@ struct ContentView: View {
                             .background(Color.orange)
                             .clipShape(Circle())
                             .shadow(radius: 4)
-                    }
+                    }.padding()
                 }
                 .padding()
             }

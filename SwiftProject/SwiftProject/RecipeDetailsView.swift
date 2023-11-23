@@ -14,25 +14,26 @@ struct RecipeDetailsView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 24) {
                 
-                ZStack(alignment: .bottomLeading) {
-                    AsyncImage(url: URL(string: recipe.imgUrl)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: .infinity, height: 200)
-                            .clipped()
-                    } placeholder: {
-                        Rectangle()
-                            .foregroundColor(.gray)
+                VStack (spacing: 2){
+                    ZStack(alignment: .bottomLeading) {
+                        AsyncImage(url: URL(string: recipe.imgUrl)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: .infinity, height: 200)
+                                .clipped()
+                        } placeholder: {
+                            Rectangle()
+                                .foregroundColor(.gray)
+                        }
                     }
-                    Rectangle()
-                        .foregroundColor(Color.black.opacity(0.5))
+                    .frame(width: .infinity, height: 200)
+                    LabeledContent("Image URL :") {
+                        TextField("Image URL", text: $recipe.imgUrl)
+                    }
                 }
-                .frame(width: .infinity, height: 200)
-                
-                
                 
                 HStack{
                     Button(action: {
@@ -46,20 +47,32 @@ struct RecipeDetailsView: View {
                         .fontWeight(.semibold)
                 }
                 
-                
-                HStack{
-                    Image(systemName: "flame")
-                        .foregroundColor(.orange)
-                    Text("Calories : " + String(format: "%.1f g", recipe.calories))
-                        .foregroundStyle(.orange)
-                        .fontWeight(.semibold)
+                VStack(alignment: .leading, spacing: 8){
+                    HStack{
+                        Image(systemName: "flame")
+                            .foregroundColor(.orange)
+                        Text("Calories : " + String(format: "%.1f g", recipe.calories))
+                            .foregroundStyle(.orange)
+                            .fontWeight(.semibold)
+                    }
+                    HStack{
+                        Image(systemName: "cube.box")
+                            .foregroundColor(.pink)
+                        Text("Carbs : " + String(format: "%.1f g", recipe.carbs))
+                            .foregroundStyle(.pink)
+                            .fontWeight(.semibold)
+                    }
                 }
-                HStack{
-                    Image(systemName: "cube.box")
-                        .foregroundColor(.pink)
-                    Text("Carbs : " + String(format: "%.1f g", recipe.carbs))
-                        .foregroundStyle(.pink)
-                        .fontWeight(.semibold)
+                
+                VStack(alignment: .leading) {
+                    Text("Preparation time (minutes)")
+                        .font(.headline)
+                    HStack{
+                        TextField("Time", value: $recipe.time, format: .number)
+                            .keyboardType(.numberPad)
+                        Text("minutes")
+                    }
+                    
                 }
                 
                 
@@ -99,29 +112,10 @@ struct RecipeDetailsView: View {
                     
                 }
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    LabeledContent("Image URL :") {
-                        TextField("Image URL", text: $recipe.imgUrl)
-                    }
-                    
-                    LabeledContent("Prep Time :") {
-                        TextField("Time", value: $recipe.time, format: .number)
-                            .keyboardType(.numberPad)
-                    }
-                    
-                    
-
-                    
-                    
-                    
-                }
-                
                 
                 
             }
             .padding()
-            
-            
             
         }
     }

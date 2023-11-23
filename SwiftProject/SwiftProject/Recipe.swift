@@ -64,18 +64,14 @@ class Ingredients: Identifiable, ObservableObject{
 
 extension Recipe {
     static let previewAllRecipes: [Recipe] = [
-        Recipe(imgUrl:"https://assets.afcdn.com/recipe/20221202/138117_w1024h1024c1cx1081cy693cxt0cyt0cxb2119cyb1415.jpg" , name: "Cassoulet", time: 200, calories: 110, carbs: 20, ingredients: [
-            Ingredients(ingredientName: "Haricot", amount: 30, ingredientCal: 10, ingredientCarbs: 5),
-            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 20, ingredientCarbs: 5),
-            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 40,  ingredientCarbs: 5)
-        ]),
         Recipe(imgUrl:"https://cache.marieclaire.fr/data/photo/w1000_ci/6g/lasagnes-aux-3-viandes-pate-maison.jpg" , name: "Lasagne", time: 20, calories: 258, carbs: 20, ingredients: [
-            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 10, ingredientCarbs: 5),
-            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 20, ingredientCarbs: 5)
+            Ingredients(ingredientName: "Tomato", amount: 100, ingredientCal: 18.2, ingredientCarbs: 3.9),
+            Ingredients(ingredientName: "Onion", amount: 100, ingredientCal: 44.7, ingredientCarbs: 10.1)
         ]),
         Recipe(imgUrl:"https://images.radio-canada.ca/v1/alimentation/recette/4x3/2868-couscous-repas-legumes-abricots.jpg" , name: "Couscous", time: 40, calories: 10, carbs: 20, ingredients: [
-            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 10, ingredientCarbs: 5),
-            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 20, ingredientCarbs: 5)
+            Ingredients(ingredientName: "Tomato", amount: 100, ingredientCal: 18.2, ingredientCarbs: 3.9),
+            Ingredients(ingredientName: "Semolina", amount: 100, ingredientCal: 360, ingredientCarbs: 73.9),
+            Ingredients(ingredientName: "Onion", amount: 100, ingredientCal: 44.7, ingredientCarbs: 10.1)
         ])
     ]
     

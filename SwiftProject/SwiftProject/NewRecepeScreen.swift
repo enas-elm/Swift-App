@@ -16,16 +16,30 @@ struct NewRecipeScreen: View {
     
     @State var ingredients: [Ingredients] = []
     @State var ingredientName = ""
-    @State var ingredientAmount: Float = 0.0
-    @State var ingredientCal: Float = 0.0
-    @State var ingredientCarbs: Float = 0.0
+    @State var ingredientAmount: Float = 100
+    @State var ingredientCal: Float = 0
+    @State var ingredientCarbs: Float = 0
     
     @State var foods = [Food]()
     @State var query: String = ""
     
     func getNutrition() {
         Api().loadData(query: self.query) { (foods) in
-            self.foods = foods
+            DispatchQueue.main.async {
+                self.foods = foods
+                
+                // Vérifie si les données sont disponibles avant d'ajouter un ingrédient
+                if let food = self.foods.first {
+                    let newIngredients = Ingredients(ingredientName: self.query, amount: self.ingredientAmount, ingredientCal: (food.calories * self.ingredientAmount) / 100, ingredientCarbs: (food.carbohydrates_total_g * self.ingredientAmount) / 100)
+                    self.ingredients.append(newIngredients)
+                    self.query = ""
+                    self.ingredientAmount = 100
+                } else {
+                    // Gérer le cas où les données de food ne sont pas disponibles
+                    // Vous pouvez afficher un message d'erreur ou prendre une autre action ici
+                    print("No food data available")
+                }
+            }
         }
     }
     
@@ -45,26 +59,35 @@ struct NewRecipeScreen: View {
             
             TextField("Image URL", text: $imgUrl)
             TextField("Recipe name", text: $name)
-            TextField("Prep time", value: $time, format: .number)
+            TextField("Preparation time (minutes)", value: $time, format: .number)
                 .keyboardType(.numberPad)
 
             
-            VStack {
-                TextField("Ingredient test", text: $query)
-                TextField("Amount", value: $ingredientAmount, format: .number)
-                    .keyboardType(.decimalPad)
-                Text("")
+             VStack(alignment: .leading) {
+                ForEach(ingredients.indices, id: \.self) { index in
+                     HStack {
+                         Text("•")
+                         Text( String(format: "%.1fg", ingredients[index].amount, "g"))
+                         Text(ingredients[index].ingredientName)
+                     }
+                 }
+                
+                 HStack{
+                     TextField("Ingredient", text: $query)
+                     HStack{
+                         TextField("Amount", value: $ingredientAmount, format: .number)
+                             .keyboardType(.decimalPad)
+                         Text("g")
+                     }
+                 }
                 Button(action: {
                     getNutrition()
-                    guard let food = foods.first else { return }
-                    let newIngredients = Ingredients(ingredientName: query, amount: ingredientAmount, ingredientCal: food.calories*ingredientAmount, ingredientCarbs: food.carbohydrates_total_g*ingredientAmount)
-                    ingredients.append(newIngredients)
-                    ingredientName = ""
-                    ingredientAmount = 0.0
                 }) {
                     Text("Add Ingredient")
                 }
+                 
             }
+            
             
             Button(action: {
                 let totalCalories = ingredients.reduce(0) { $0 + $1.ingredientCal }
