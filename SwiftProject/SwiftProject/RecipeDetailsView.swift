@@ -18,6 +18,7 @@ struct RecipeDetailsView: View {
                 
                 VStack (spacing: 2){
                     ZStack(alignment: .bottomLeading) {
+                        
                         AsyncImage(url: URL(string: recipe.imgUrl)) { image in
                             image
                                 .resizable()
@@ -62,6 +63,13 @@ struct RecipeDetailsView: View {
                             .foregroundStyle(.pink)
                             .fontWeight(.semibold)
                     }
+                    HStack{
+                        Image(systemName: "dumbbell")
+                            .foregroundColor(.blue)
+                        Text("Proteins : " + String(format: "%.1f g", recipe.proteins))
+                            .foregroundStyle(.blue)
+                            .fontWeight(.semibold)
+                    }
                 }
                 
                 VStack(alignment: .leading) {
@@ -84,28 +92,42 @@ struct RecipeDetailsView: View {
                             Text("•")
                             Text( String(format: "%.1f g", ingredient.amount))
                             Text(ingredient.ingredientName)
-                            HStack(spacing: 4){
-                                Image(systemName: "flame")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.orange)
-                                Text( String(format: "%.1fg", ingredient.ingredientCal))
-                                    .foregroundStyle(.orange)
-                                    .fontWeight(.semibold)
-                                    .font(.system(size: 12))
-                            }
                             
-                            HStack(spacing: 4){
-                                Image(systemName: "cube.box")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 10, height: 10)
-                                    .foregroundColor(.pink)
-                                Text( String(format: "%.1fg", ingredient.ingredientCarbs))
-                                    .foregroundStyle(.pink)
-                                    .fontWeight(.semibold)
-                                    .font(.system(size: 12))
+                            HStack(spacing:10){
+                                HStack(spacing: 4){
+                                    Image(systemName: "flame")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(.orange)
+                                    Text( String(format: "%.1fg", ingredient.ingredientCal))
+                                        .foregroundStyle(.orange)
+                                        .fontWeight(.semibold)
+                                        .font(.system(size: 12))
+                                }
+                                
+                                HStack(spacing: 4){
+                                    Image(systemName: "cube.box")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(.pink)
+                                    Text( String(format: "%.1fg", ingredient.ingredientCarbs))
+                                        .foregroundStyle(.pink)
+                                        .fontWeight(.semibold)
+                                        .font(.system(size: 12))
+                                }
+                                HStack(spacing: 4){
+                                    Image(systemName: "dumbbell")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 10, height: 10)
+                                        .foregroundColor(.blue)
+                                    Text( String(format: "%.1fg", ingredient.ingredientProteins))
+                                        .foregroundStyle(.blue)
+                                        .fontWeight(.semibold)
+                                        .font(.system(size: 12))
+                                }
                             }
                         }
                     }

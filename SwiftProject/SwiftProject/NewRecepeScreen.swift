@@ -19,6 +19,7 @@ struct NewRecipeScreen: View {
     @State var ingredientAmount: Float = 100
     @State var ingredientCal: Float = 0
     @State var ingredientCarbs: Float = 0
+    @State var ingredientProteins: Float = 0
     
     @State var foods = [Food]()
     @State var query: String = ""
@@ -30,7 +31,7 @@ struct NewRecipeScreen: View {
                 
                 // Vérifie si les données sont disponibles avant d'ajouter un ingrédient
                 if let food = self.foods.first {
-                    let newIngredients = Ingredients(ingredientName: self.query, amount: self.ingredientAmount, ingredientCal: (food.calories * self.ingredientAmount) / 100, ingredientCarbs: (food.carbohydrates_total_g * self.ingredientAmount) / 100)
+                    let newIngredients = Ingredients(ingredientName: self.query, amount: self.ingredientAmount, ingredientCal: (food.calories * self.ingredientAmount) / 100, ingredientCarbs: (food.carbohydrates_total_g * self.ingredientAmount) / 100, ingredientProteins: (food.protein_g * self.ingredientAmount) / 100)
                     self.ingredients.append(newIngredients)
                     self.query = ""
                     self.ingredientAmount = 100
@@ -92,8 +93,9 @@ struct NewRecipeScreen: View {
             Button(action: {
                 let totalCalories = ingredients.reduce(0) { $0 + $1.ingredientCal }
                 let totalCarbs = ingredients.reduce(0) { $0 + $1.ingredientCarbs }
+                let totalProteins = ingredients.reduce(0) { $0 + $1.ingredientProteins }
                 
-                let myNewRecipe = Recipe(imgUrl: imgUrl, name: name, time: time!, calories: totalCalories, carbs: totalCarbs, ingredients: ingredients)
+                let myNewRecipe = Recipe(imgUrl: imgUrl, name: name, time: time!, calories: totalCalories, carbs: totalCarbs, proteins: totalProteins, ingredients: ingredients)
                 allRecipes.recipes.append(myNewRecipe)
             }) {
                 Text("Add the recipe")

@@ -28,7 +28,6 @@ struct ContentView: View {
                     }
                     NavigationLink {
                         NewRecipeScreen(allRecipes: myRecipes, ingredients: [])
-                        Image(systemName: "plus.circle.fill")
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 28))
