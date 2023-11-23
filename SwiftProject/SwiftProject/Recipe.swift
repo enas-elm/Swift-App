@@ -8,44 +8,75 @@
 import Foundation
 import SwiftUI
 
-// MARK: Recepe and AllRecipes Model
+// MARK: Recipe and AllRecipes Model
 
 class AllRecipes: ObservableObject {
-    @Published var recipes: [Recepe]
+    @Published var recipes: [Recipe]
     
-    init(recipes: [Recepe]) {
+    init(recipes: [Recipe]) {
         self.recipes = recipes
     }
     
-    func removeRecepe(recipe: Recepe) {
+    func removeRecipe(recipe: Recipe) {
         recipes.removeAll { $0.id == recipe.id }
-     }
+    }
 }
 
-class Recepe: Identifiable, ObservableObject {
+class Recipe: Identifiable, ObservableObject {
     let id: UUID = UUID()
     
     @Published var name: String
     @Published var imgUrl: String
     @Published var time: Float
     @Published var calories: Float
+    @Published var carbs: Float
     
-    init(imgUrl: String, name: String, time: Float, calories: Float) {
+    @Published var ingredients: [Ingredients]
+    
+    init(imgUrl: String, name: String, time: Float, calories: Float, carbs: Float, ingredients: [Ingredients]) {
         self.imgUrl = imgUrl
         self.name = name
         self.time = time
         self.calories = calories
+        self.carbs = carbs
+        self.ingredients = ingredients
     }
 }
 
+class Ingredients: Identifiable, ObservableObject{
+    let id: UUID = UUID()
+    
+    @Published var ingredientName: String
+    @Published var amount: Float
+    @Published var ingredientCal: Float
+    @Published var ingredientCarbs: Float
+    
+    init(ingredientName: String, amount: Float, ingredientCal: Float, ingredientCarbs: Float){
+        self.ingredientName = ingredientName
+        self.amount = amount
+        self.ingredientCal = ingredientCal
+        self.ingredientCarbs = ingredientCarbs
+    }
+    
+}
 
 // MARK: Preview Data
 
-extension Recepe {
-    static let previewAllRecipes: [Recepe] = [
-        Recepe(imgUrl:"https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_387,q_auto,w_650/https://s3-eu-west-1.amazonaws.com/images-ca-1-0-1-eu/tag_photos/original/69867/cuisine_-originale-flickr-50314377611_64ad280b6f_k.jpg" , name: "Cassoulet", time: 200, calories: 110),
-        Recepe(imgUrl:"https://images.ricardocuisine.com/services/articles/top-recettes-mars-2022-intro-mobile-1649250827.jpg" , name: "Lait", time: 20, calories: 258),
-        Recepe(imgUrl:"https://www.nicolas-aubineau.com/wp-content/uploads/2021/05/recette-gateau-sport-maison.jpg" , name: "Couscous", time: 40, calories: 10)
+extension Recipe {
+    static let previewAllRecipes: [Recipe] = [
+        Recipe(imgUrl:"https://assets.afcdn.com/recipe/20221202/138117_w1024h1024c1cx1081cy693cxt0cyt0cxb2119cyb1415.jpg" , name: "Cassoulet", time: 200, calories: 110, carbs: 20, ingredients: [
+            Ingredients(ingredientName: "Haricot", amount: 30, ingredientCal: 10, ingredientCarbs: 5),
+            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 20, ingredientCarbs: 5),
+            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 40,  ingredientCarbs: 5)
+        ]),
+        Recipe(imgUrl:"https://cache.marieclaire.fr/data/photo/w1000_ci/6g/lasagnes-aux-3-viandes-pate-maison.jpg" , name: "Lasagne", time: 20, calories: 258, carbs: 20, ingredients: [
+            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 10, ingredientCarbs: 5),
+            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 20, ingredientCarbs: 5)
+        ]),
+        Recipe(imgUrl:"https://images.radio-canada.ca/v1/alimentation/recette/4x3/2868-couscous-repas-legumes-abricots.jpg" , name: "Couscous", time: 40, calories: 10, carbs: 20, ingredients: [
+            Ingredients(ingredientName: "Tomate", amount: 50, ingredientCal: 10, ingredientCarbs: 5),
+            Ingredients(ingredientName: "Oignon", amount: 50, ingredientCal: 20, ingredientCarbs: 5)
+        ])
     ]
     
 }

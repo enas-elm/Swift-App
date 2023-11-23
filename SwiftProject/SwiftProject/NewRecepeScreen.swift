@@ -12,8 +12,13 @@ struct NewRecipeScreen: View {
     
     @State var imgUrl: String = ""
     @State var name: String = ""
-    @State var time: Float = 260
-    @State var calories: Float = 20
+    @State var time: Float?
+    
+    @State var ingredients: [Ingredients] = []
+    @State var ingredientName = ""
+    @State var ingredientAmount: Float = 0.0
+    @State var ingredientCal: Float = 0.0
+    @State var ingredientCarbs: Float = 0.0
     
     @State var foods = [Food]()
     @State var query: String = ""
@@ -30,32 +35,45 @@ struct NewRecipeScreen: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: .infinity, height: 200)
+                    .clipped()
             } placeholder: {
                 Rectangle()
                     .foregroundColor(.gray)
             }
-            .frame(width: 300, height: 200)
+            .frame(width: .infinity, height: 200)
             
-            TextField("Image (URL)", text: $imgUrl)
-            TextField("Nom", text: $name)
-            TextField("Price", value: $calories, format: .number)
+            TextField("Image URL", text: $imgUrl)
+            TextField("Recipe name", text: $name)
+            TextField("Prep time", value: $time, format: .number)
                 .keyboardType(.numberPad)
-            TextField("Time", value: $time, format: .number)
-                .keyboardType(.numberPad)
-            
-            TextField(
-                "Enter some food text",
-                text: $query
-            )
-            
 
+            
+            VStack {
+                TextField("Ingredient test", text: $query)
+                TextField("Amount", value: $ingredientAmount, format: .number)
+                    .keyboardType(.decimalPad)
+                Text("")
+                Button(action: {
+                    getNutrition()
+                    guard let food = foods.first else { return }
+                    let newIngredients = Ingredients(ingredientName: query, amount: ingredientAmount, ingredientCal: food.calories*ingredientAmount, ingredientCarbs: food.carbohydrates_total_g*ingredientAmount)
+                    ingredients.append(newIngredients)
+                    ingredientName = ""
+                    ingredientAmount = 0.0
+                }) {
+                    Text("Add Ingredient")
+                }
+            }
+            
             Button(action: {
-                getNutrition()
-                guard let food = foods.first else { return }
-                let myNewRecipe = Recipe(imgUrl: imgUrl, name: name, time: time, calories: food.calories)
+                let totalCalories = ingredients.reduce(0) { $0 + $1.ingredientCal }
+                let totalCarbs = ingredients.reduce(0) { $0 + $1.ingredientCarbs }
+                
+                let myNewRecipe = Recipe(imgUrl: imgUrl, name: name, time: time!, calories: totalCalories, carbs: totalCarbs, ingredients: ingredients)
                 allRecipes.recipes.append(myNewRecipe)
             }) {
-                Text("Add")
+                Text("Add the recipe")
             }
             .padding()
         }
@@ -65,5 +83,5 @@ struct NewRecipeScreen: View {
 
 
 #Preview {
-    NewRecipeScreen(allRecipes: AllRecipes(recipes: []))
+    NewRecipeScreen(allRecipes: AllRecipes(recipes: []), ingredients: [])
 }

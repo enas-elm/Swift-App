@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack() {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(myRecipes.recipes) { recipe in
@@ -24,14 +24,20 @@ struct ContentView: View {
                             } label: {
                                 RecipeCell(recipe: recipe)
                             }
-                            Divider()
-                                .padding()
                         }
                     }
                     NavigationLink {
-                        NewRecipeScreen(allRecipes: myRecipes)
+                        NewRecipeScreen(allRecipes: myRecipes, ingredients: [])
+                        Image(systemName: "plus.circle.fill")
                     } label: {
-                       Text("New")
+                        Image(systemName: "plus")
+                            .font(.system(size: 28))
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.orange)
+                            .clipShape(Circle())
+                            .shadow(radius: 4)
                     }
                 }
                 .padding()

@@ -15,21 +15,21 @@ struct RecipeCell: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: .infinity, height: 150)
+                    .clipped()
             } placeholder: {
                 Rectangle()
                     .foregroundColor(.gray)
             }
-                Rectangle()
-                    .foregroundColor(Color.black.opacity(0.4))
+            Rectangle()
+                .foregroundColor(Color.black.opacity(0.5))
             Text(recipe.name)
                 .foregroundColor(.white)
-                .font(.system(size: 16))
+                .font(.system(size: 18))
                 .fontWeight(.heavy)
                 .padding(16)
         }
-        
-        .frame(width: 150, height: 150)
-
+        .frame(width: .infinity, height: 150)
     }
 }
 
