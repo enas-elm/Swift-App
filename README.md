@@ -1,6 +1,20 @@
 # Swift Macros App 🍲
 
+- [Description](#description)
+- [Feature](#feature)
+- [API](#api)
+
+
+## Description
+
 This application allows you to create your recipes and getting automatically the macronutrients of your favorite food !
+
+## Feature
+
+- Add recipe name, image, preparation time and ingredients
+- See the recipe details and their macros 
+- Modify the recipe information
+- Delete a recipe
 
 ## API
 
